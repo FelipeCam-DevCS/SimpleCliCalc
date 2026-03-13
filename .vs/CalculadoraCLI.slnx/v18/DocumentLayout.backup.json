@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Felip\\source\\repos\\CalculadoraCLI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DF75CF-160C-4755-AB8C-DAAC66CE8845}|CalculadoraCLI\\CalculadoraCLI.csproj|c:\\users\\felip\\source\\repos\\calculadoracli\\calculadoracli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DF75CF-160C-4755-AB8C-DAAC66CE8845}|CalculadoraCLI\\CalculadoraCLI.csproj|solutionrelative:calculadoracli\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9DF75CF-160C-4755-AB8C-DAAC66CE8845}|CalculadoraCLI\\CalculadoraCLI.csproj|C:\\Users\\Felip\\source\\repos\\CalculadoraCLI\\calculadoracli\\calculadora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9DF75CF-160C-4755-AB8C-DAAC66CE8845}|CalculadoraCLI\\CalculadoraCLI.csproj|solutionrelative:calculadoracli\\calculadora.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Calculadora.cs",
+              "DocumentMoniker": "C:\\Users\\Felip\\source\\repos\\CalculadoraCLI\\CalculadoraCLI\\Calculadora.cs",
+              "RelativeDocumentMoniker": "CalculadoraCLI\\Calculadora.cs",
+              "ToolTip": "C:\\Users\\Felip\\source\\repos\\CalculadoraCLI\\CalculadoraCLI\\Calculadora.cs",
+              "RelativeToolTip": "CalculadoraCLI\\Calculadora.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T21:47:07.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Felip\\source\\repos\\CalculadoraCLI\\CalculadoraCLI\\Program.cs",
+              "RelativeDocumentMoniker": "CalculadoraCLI\\Program.cs",
+              "ToolTip": "C:\\Users\\Felip\\source\\repos\\CalculadoraCLI\\CalculadoraCLI\\Program.cs",
+              "RelativeToolTip": "CalculadoraCLI\\Program.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAjwJYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-13T21:54:07.126Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

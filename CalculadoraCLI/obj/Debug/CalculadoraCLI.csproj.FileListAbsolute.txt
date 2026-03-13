@@ -1,0 +1,7 @@
+C:\Users\Felip\source\repos\CalculadoraCLI\CalculadoraCLI\bin\Debug\CalculadoraCLI.exe.config
+C:\Users\Felip\source\repos\CalculadoraCLI\CalculadoraCLI\bin\Debug\CalculadoraCLI.exe
+C:\Users\Felip\source\repos\CalculadoraCLI\CalculadoraCLI\bin\Debug\CalculadoraCLI.pdb
+C:\Users\Felip\source\repos\CalculadoraCLI\CalculadoraCLI\obj\Debug\CalculadoraCLI.csproj.AssemblyReference.cache
+C:\Users\Felip\source\repos\CalculadoraCLI\CalculadoraCLI\obj\Debug\CalculadoraCLI.csproj.CoreCompileInputs.cache
+C:\Users\Felip\source\repos\CalculadoraCLI\CalculadoraCLI\obj\Debug\CalculadoraCLI.exe
+C:\Users\Felip\source\repos\CalculadoraCLI\CalculadoraCLI\obj\Debug\CalculadoraCLI.pdb
