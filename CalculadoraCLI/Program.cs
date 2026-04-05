@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Lifetime;
@@ -18,133 +19,172 @@ namespace CalculadoraCLI
          */
         static void Main(string[] args)
         {
-            double? primaryValue = null;
-            double secundaryValue;
 
-            ConsoleKeyInfo ckeyinfo; //Declaração de estrutura que armazena a tecla presionada pelo usuario 
+            bool continuar = true;
+            bool UserValueCatcher = true;
+            bool invaSeleCont = true;
+            bool UseOldNumDialog = true;
+
+            ConsoleKeyInfo ckeyinfo = new ConsoleKeyInfo(); //Declaração de estrutura que armazena a tecla presionada pelo usuario 
+
+            double? primaryValue = null;
+            double? secundaryValue = null;
+            
 
             Calculadora calc = new Calculadora();
 
-            //Metodo que inicializa a aparecia do programa
+            //Metodo que inicializa a aparencia do programa
             void StartApparence()
             {
+
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Clear();
             }
-
-            //Metodo que exibe o dialogo de escolha de valor caso o formato seja invalido o Dialogo é exibdo novamente até o valor ser valido
-            void DialogCalc()
+            StartApparence();
+            while (continuar)//O loop continua até o usuario decidir sair da aplicação
             {
-                Console.Clear();
-                if (primaryValue == null) {
-                    Console.WriteLine("Escreva o valor primario\n" + 
-                        "↓");
-                    try
-                    {
-                        primaryValue = Convert.ToDouble(Console.ReadLine());
-                    }
-                    catch(System.FormatException)
-                    {
-                        DialogCalc();
-                    }
-                }
-                Console.WriteLine("Escreva o valor secundario\n" +
-                    "↓");
-                try
-                {
-                    secundaryValue = Convert.ToDouble(Console.ReadLine());
-                }
-                catch (System.FormatException)
-                {
-                    DialogCalc();
-                }
-                Console.WriteLine($"| O valor resultante foi → [ {calc.FazerCalculo(ckeyinfo.KeyChar, Convert.ToDouble(primaryValue), secundaryValue)} ]  \n ");
-            }
 
-            void DialogUseOldNum()//Dialogo que é exibido caso tenha um resultado armazenado para ser possivel definir o resultado como valor primerio assim podendo dar continuidade ao calculo ou iniciar uma "nova sessão" 
-            {
-                if (calc.result != null)
+                StartApparence();
+                UserValueCatcher = true;
+                invaSeleCont = true;
+                UseOldNumDialog = true;
+                secundaryValue = null;
+                ckeyinfo = new ConsoleKeyInfo();
+
+                while (invaSeleCont)//Caso seja invalido o loop continua até o usuario selecionar uma opção valida
                 {
+
                     Console.WriteLine("" +
-                        "|Deseja usar o resultado anterior como valor primario?\n" +
-                        "   | S → Define o valor primario como o resultado atual\n" +
-                        "   | N → Limpa o resultado anterior" +
-                        "");
+                       "| Escolha a operação, use virgulas para decimal:\n" +
+                       "    | [ * ] → Multiplicação\n" +
+                       "    | [ / ] → Divisão\n" +
+                       "    | [ + ] → Adição\n" +
+                       "    | [ - ] → Subtração " +
+                      "");
 
-                    ckeyinfo = Console.ReadKey(true);//Ativa a leitura de teclado e salva a tecla pressionada no ckeyinfo
-
-                    Console.Clear();
+                    ckeyinfo = Console.ReadKey(true);
                     switch (ckeyinfo.KeyChar)
                     {
-                        case 'n':
-                            primaryValue = Convert.ToDouble(calc.result);
+                        case '*':
+                            invaSeleCont = false;
+                            
                             break;
-                        case 's':
-                            calc.result = null;
-                            primaryValue = null;
+                        case '+':
+                            invaSeleCont = false;
+                            
+                            break;
+                        case '-':
+                            invaSeleCont = false;
+                            
+                            break;
+                        case '/':
+                            invaSeleCont = false;
+                            
                             break;
                         default:
-                            DialogUseOldNum();
+                            invaSeleCont = true;
+                            Console.WriteLine("Operação invalida");
                             break;
+                    }
+                }
+
+
+                while (UserValueCatcher)
+                {
+
+                    try
+                    {
+                        if (primaryValue == null)
+                        {
+                            Console.WriteLine("Escreva o valor primario\n" +
+                           "↓");
+                            primaryValue = Convert.ToDouble(Console.ReadLine());
+                        }
+
+                        Console.WriteLine("Escreva o valor secundario\n" +
+                       "↓");
+
+                        secundaryValue = Convert.ToDouble(Console.ReadLine());
+                        UserValueCatcher = false;
+                        Console.WriteLine($"| O valor resultante foi → [ {calc.FazerCalculo(ckeyinfo.KeyChar, Convert.ToDouble(primaryValue), Convert.ToDouble(secundaryValue))} ]  \n ");
+                    }
+                    catch
+                    {
+                        UserValueCatcher = true;
+                    }
+                    
+                }
+                        while (UseOldNumDialog)
+                        {
+                            
+                                
+
+                                if (calc.result != null)
+                                {
+                                    Console.WriteLine("" +
+                                           "|Deseja usar o resultado anterior como valor primario?\n" +
+                                           "   | S → Define o valor primario como o resultado atual\n" +
+                                           "   | N → Limpa o resultado anterior" +
+                                           "");
+                                ckeyinfo = Console.ReadKey();
+
+                                    switch (ckeyinfo.KeyChar)
+                                    {
+                                        case 'n':
+                                        case 'N':
+                                            calc.result = null;
+                                            primaryValue = null;
+                                            UseOldNumDialog = false;
+                                            break;
+                                        case 's':
+                                        case 'S':
+                                            primaryValue = Convert.ToDouble(calc.result);
+                                            UseOldNumDialog = false;
+                                            break;
+                                        default:
+                                            UseOldNumDialog = true;
+                                            break;
+                                    }
+                                }
+                        Console.WriteLine("" +
+                               "|Deseja continuar a usar a calculadora S para sim e N para não?\n" +
+                               "   | S → Você vai voltar para continuar os calculos\n" +
+                               "   | N → Termina a aplicação" +
+                               "");
+                        ckeyinfo = Console.ReadKey();
+
+                        switch (ckeyinfo.KeyChar)
+                        {
+                            case 'n':
+                            case 'N':
+                                continuar = false;
+                                UseOldNumDialog = false;
+                                break;
+                            case 's':
+                            case 'S':
+                                continuar = true;
+                                UseOldNumDialog = false;
+
+                                break;
+                            default:
+                                UseOldNumDialog = true;
+                                break;
+                        }
+
+                    }
+                        }
 
                     }
                 }
+
+
             }
-            StartApparence();
-                Console.WriteLine("Calculadora CLI\n");
-                        OpChoice();
-           void OpChoice()
-            {
+        
+    
+    
 
-
-                DialogUseOldNum();
-                Console.Clear();
-                if (calc.result != null)
-                {
-                    Console.WriteLine($"|Resultado anterior → {Convert.ToString(calc.result)}|");
-                }
-
-                Console.WriteLine("" +
-                    "| Escolha a operação, use virgulas para decimal:\n" +
-                    "    | [ * ] → Multiplicação\n" +
-                    "    | [ / ] → Divisão\n" +
-                    "    | [ + ] → Adição\n" +
-                    "    | [ - ] → Subtração " +
-                    "");
-
-                ckeyinfo = Console.ReadKey(true);
-                switch (ckeyinfo.KeyChar)
-                {
-                    case '*':
-                        DialogCalc();
-                        break;
-
-
-                    case '/':
-                        DialogCalc();
-
-                        break;
-
-
-                    case '+':
-                        DialogCalc();
-
-                        break;
-
-
-                    case '-':
-                        DialogCalc();
-
-                        break;
-
-                    default:
-                        OpChoice();
-                        break;
-                }
-            }
-
-               }
-            }
+            
           
-        }
+          
+        

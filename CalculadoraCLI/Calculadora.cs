@@ -19,15 +19,18 @@ namespace CalculadoraCLI
                 {
              
                     case '/':
-                    
+
+                    try
+                    { 
                     resultMet = firstValue / secondValue;
-                    if (result == null)
-                    { return 0; }
-                    else
-                    {   
-                    result = resultMet;
-                    return resultMet;
                     }
+                    catch(DivideByZeroException)
+                    {
+                        return 0;
+                    }
+                    result = resultMet;
+                        return resultMet;
+                    
                     
                     
                     case '*':
